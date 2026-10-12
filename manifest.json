@@ -1,0 +1,11 @@
+{
+    "manifest_version":3,
+    "name":"My first extension",
+    "version":"1.0",
+    "description":"The smallest extension chrome will load",
+    "action":{
+        "default_popup":"popup.html",
+        "default_title":"open the counter"
+    }
+
+}
