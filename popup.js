@@ -1,7 +1,17 @@
-const countElemen=document.getElementById("count")
-const addBtn=document.getElementById("add")
-let count=0;
-addBtn.addEventListener("click",()=>{
-    count+=1;
-    countElemen.textContent=count;
-})
+
+const countElement = document.getElementById("count");
+
+async function showSavedCounts() {
+    const data = await chrome.storage.local.get("count");
+    countElement.textContent = data.count || 0;
+}
+
+showSavedCounts();
+
+document.getElementById("add").addEventListener("click", async () => {
+    const data = await chrome.storage.local.get("count");
+    const next = (data.count || 0) + 1;
+
+    await chrome.storage.local.set({ count: next });
+    countElement.textContent = next;
+});

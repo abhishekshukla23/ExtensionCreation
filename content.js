@@ -1,19 +1,13 @@
-//runs inside the vis page real pages doc not our extensions page
+//this script can see the page
+//this is the one that answers questions related to the page
+//it waits for a message then replies with a text
 
-
-
-const banner=document.createElement("div");
-banner.textContent="This page was touched by my extension";
-
-banner.style.position="fixed";
-banner.style.top="0";
-banner.style.left="0"
-banner.style.right="0";
-banner.style.zIndex="9999";
-banner.style.background="#ffd43b";
-banner.style.padding="10px";
-banner.style.textAlign="center"
-banner.style.fontFamily="system-ui, sans-serif";
-
-
-document.body.prepend(banner)
+console.log("Content script loaded!");
+chrome.runtime.onMessage.addListener(
+    (message, sender, sendResponse) => {
+        if (message.type === "COUNT_LINKS") {
+            const links = document.querySelectorAll("a");
+            sendResponse({ count: links.length });
+        }
+    }
+);

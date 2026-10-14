@@ -1,7 +1,7 @@
-//not always running
-//chrome recieves an event
-//chrome wakes it on events it sleeps when quiet
-//so listeners must be registered at the top level
+// //not always running
+// //chrome recieves an event
+// //chrome wakes it on events it sleeps when quiet
+// //so listeners must be registered at the top level
 
 chrome.runtime.onInstalled.addListener(()=>{
     console.log("Extension service worker woked up")
