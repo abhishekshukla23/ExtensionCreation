@@ -4,8 +4,7 @@
   "version": "1.0",
   "description": "The smallest extension Chrome will load",
   "permissions":[
-    "activeTab",
-    "storage"
+    "activeTab"
   ],
   "action": {
     "default_popup":"popup.html",

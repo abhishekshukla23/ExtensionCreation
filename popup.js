@@ -1,17 +1,6 @@
-
-const countElement = document.getElementById("count");
-
-async function showSavedCounts() {
-    const data = await chrome.storage.local.get("count");
-    countElement.textContent = data.count || 0;
+async function showTabInfo() {
+    const [tab]=await chrome.tabs.query({active:true,currentWindow:true})
+    document.getElementById("title").textContent=tab.title;
+    document.getElementById("url").textContent=tab.url;
 }
-
-showSavedCounts();
-
-document.getElementById("add").addEventListener("click", async () => {
-    const data = await chrome.storage.local.get("count");
-    const next = (data.count || 0) + 1;
-
-    await chrome.storage.local.set({ count: next });
-    countElement.textContent = next;
-});
+showTabInfo()
