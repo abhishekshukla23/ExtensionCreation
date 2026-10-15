@@ -1,14 +1,12 @@
-// //not always running
-// //chrome recieves an event
-// //chrome wakes it on events it sleeps when quiet
-// //so listeners must be registered at the top level
-
-chrome.runtime.onInstalled.addListener(()=>{
-    console.log("Extension service worker woked up")
-
-})
-
-chrome.action.onClicked.addListener((tab)=>{
-      console.log("Icon clicked while on the tab:",tab.url)
+async function applyBadge() {
+    const data=await chrome.storage.local.get("badgeText")
+    if(data.badgeText){
+       await chrome.action.setBadgeText({text:data.badgeText})
+        await chrome.action.setBadgeBackgroundColor({color:"#e8590c"})
+    }
+    else{
+        setBadgeText({text:""})
+    }
+    
 }
-)
+applyBadge()

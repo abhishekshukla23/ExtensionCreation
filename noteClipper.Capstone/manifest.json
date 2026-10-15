@@ -1,0 +1,29 @@
+{
+    "manifest_version":"3",
+    "name":"Note Clip",
+    "version":"1.0.0",
+    "description":"Select text on any page and save it as a clip that u can revisit",
+    "icons":{
+        "16":"icons/icon16.png",
+        "48":"icons/icon48.png",
+        "128":"icons/icon128.png"
+    },
+    "permissions":[
+        "storage",
+        "activeTab"
+    ],
+    "action":{
+        "default_popup":"popup.html",
+        "default_title":"Note clip"
+    },
+    "options_page":"options.html",
+    "content_scripts":[
+        {
+            "matches":["<all_urls>"],
+            "js":["content.js"]
+        }
+    ],
+    "background":{
+        "service_worker":"background.js"
+    }
+}
